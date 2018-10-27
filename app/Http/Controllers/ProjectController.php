@@ -26,7 +26,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('project.create2');
+        return view('project.create');
     }
 
     /**
@@ -40,12 +40,22 @@ class ProjectController extends Controller
         /** @var  $data */
         $data=new Project();
         $data->name=$request->get('name');
-        $data->type_project=$request->get('type_project');
+        $data->type_project= 0;
         $data->start_date=$request->get('start_date');
         $data->notes=$request->get('notes');
         $data->save();
         return redirect('project');
 
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create_project_detail()
+    {
+        return view('project.create_detail');
     }
 
     /**

@@ -10,7 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('project/create-detail', 'ProjectController@create_project_detail');
 Route::resource('project','ProjectController');
+
+
 Route::get('/', function () {
     return view('welcome');
 });
