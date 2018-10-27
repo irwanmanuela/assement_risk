@@ -23,6 +23,9 @@
     <link href="{{asset('assets/plugins/switchery/css/switchery.min.css')}}" rel="stylesheet" type="text/css" media="screen" />
     <link href="{{asset('pages/css/pages-icons.css" rel="stylesheet')}}" type="text/css">
     <link class="main-stylesheet" href="{{asset('pages/css/pages.css')}}" rel="stylesheet" type="text/css" />
+
+    @yield('page-css')
+
     <!--[if lte IE 9]>
     <link href="{{asset('pages/css/ie9.css')}}" rel="stylesheet" type="text/css" />
     <![endif]-->
@@ -38,6 +41,7 @@
 <body class="fixed-header">
     @yield('content')
 </body>
+
 <!-- BEGIN VENDOR JS -->
 <script src="{{asset('assets/plugins/pace/pace.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/plugins/jquery/jquery-1.11.1.min.js')}}" type="text/javascript"></script>
@@ -61,6 +65,7 @@
 <!-- BEGIN PAGE LEVEL JS -->
 <script src="{{asset('assets/js/scripts.js')}}" type="text/javascript"></script>
 <!-- END PAGE LEVEL JS -->
+    @yield('page-script')
 <script>
     $(function()
     {

@@ -11,6 +11,8 @@
 |
 */
 Route::get('project/create-detail', 'ProjectController@create_project_detail');
+Route::get('project/loading', 'ProjectController@loading');
+Route::get('project/result', 'ProjectController@result');
 Route::resource('project','ProjectController');
 
 

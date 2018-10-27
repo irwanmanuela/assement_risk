@@ -49,13 +49,33 @@ class ProjectController extends Controller
     }
 
     /**
+ * Show the form for creating a new resource.
+ *
+ * @return \Illuminate\Http\Response
+ */
+    public function create_project_detail()
+    {
+        return view('project.create_detail');
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create_project_detail()
+    public function loading()
     {
-        return view('project.create_detail');
+        return view('project.loading');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function result()
+    {
+        return view('project.result');
     }
 
     /**
