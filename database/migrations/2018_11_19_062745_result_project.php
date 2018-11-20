@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class LaporanAntara extends Migration
+class ResultProject extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class LaporanAntara extends Migration
      */
     public function up()
     {
-        Schema::create('laporan_antara', function (Blueprint $table) {
+        Schema::create('result_project', function (Blueprint $table) {
             $table->increments('id');
             $table->string('project_id');
-            $table->timestamps();
-            $table->string('activity');
-            $table->integer('duration_date');
-            $table->string('pinalty');
+            $table->string('match_project_id');
+            $table->string('persentase');
+            $table->integer('point_match');
+
         });
     }
 
@@ -30,6 +30,6 @@ class LaporanAntara extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('laporan_antara');
+        Schema::dropIfExists('result_project');
     }
 }

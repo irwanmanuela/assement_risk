@@ -18,7 +18,7 @@ class LaporanAkhirDraft extends Migration
             $table->string('project_id');
             $table->timestamps();
             $table->string('activity');
-            $table->dateTime('duration_date');
+            $table->integer('duration_date');
             $table->string('pinalty');
         });
     }

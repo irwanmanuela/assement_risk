@@ -125,7 +125,7 @@
     });
 
     setTimeout(function () {
-        window.location.href = "result";
+        window.location.href = "/result/{{ $id }}";
     }, 1600);
 
 </script>

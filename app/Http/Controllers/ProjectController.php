@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\LaporanAkhir;
+use App\LaporanAntara;
+use App\LaporanDraftAkhir;
+use App\LaporanPendahuluan;
+use App\MasterDataLaporan;
 use App\project;
+use App\ResultProject;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -44,18 +50,11 @@ class ProjectController extends Controller
         $data->start_date=$request->get('start_date');
         $data->notes=$request->get('notes');
         $data->save();
-        return redirect('project');
 
-    }
+        $id = $data->getAttributes()['id'];
+//        return redirect('create-detail',$id);
+        return redirect()->route('create-detail', ['id' => $id]);
 
-    /**
- * Show the form for creating a new resource.
- *
- * @return \Illuminate\Http\Response
- */
-    public function create_project_detail()
-    {
-        return view('project.create_detail');
     }
 
     /**
@@ -63,9 +62,14 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function loading()
+    public function create_project_detail($id)
     {
-        return view('project.loading');
+        $data_pendahuluan = MasterDataLaporan::where('laporan_type', 'PENDAHULUAN')->get();
+        $data_antara = MasterDataLaporan::where('laporan_type', 'ANTARA')->get();
+        $data_draft_akhir = MasterDataLaporan::where('laporan_type', 'DRAFT_AKHIR')->get();
+        $data_akhir = MasterDataLaporan::where('laporan_type', 'AKHIR')->get();
+
+        return view('project.create_detail', compact('data_pendahuluan','data_antara','data_draft_akhir','data_akhir', 'id'));
     }
 
     /**
@@ -73,8 +77,219 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function result()
+    public function addItemLaporanPendahuluanAction()
     {
+
+        $data_pendahuluan = MasterDataLaporan::where('laporan_type', 'PENDAHULUAN')->get();
+
+        return view('project.add_item_laporan_pendahuluan', compact('data_pendahuluan'));
+
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function addItemLaporanAntaraAction()
+    {
+        $data_antara = MasterDataLaporan::where('laporan_type', 'ANTARA')->get();
+
+        return view('project.add_item_laporan_antara', compact('data_antara'));
+
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function addItemLaporanDraftAkhirAction()
+    {
+        $data_draft_akhir = MasterDataLaporan::where('laporan_type', 'DRAFT_AKHIR')->get();
+
+        return view('project.add_item_laporan_draft_akhir', compact('data_draft_akhir'));
+
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function addItemLaporanAkhirAction()
+    {
+        $data_akhir = MasterDataLaporan::where('laporan_type', 'AKHIR')->get();
+
+        return view('project.add_item_laporan_akhir', compact('data_akhir'));
+
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function saveDetailAction(Request $request)
+    {
+
+        $id = $request->get('id');
+
+        foreach ($request->get('item_pendahuluan') as $key=>$value) {
+            $dataPendahuluan =new LaporanPendahuluan();
+            $dataPendahuluan->project_id = $id;
+            $dataPendahuluan->activity= $value;
+            $dataPendahuluan->duration_date = $request->get('duration_pendahuluan')[$key];
+            $dataPendahuluan->pinalty = $request->get('pinalti_pendahuluan')[$key];
+            $dataPendahuluan->save();
+        }
+
+        foreach ($request->get('item_antara') as $key=>$value) {
+            $dataAntara =new LaporanAntara();
+            $dataAntara->project_id = $id;
+            $dataAntara->activity= $value;
+            $dataAntara->duration_date = $request->get('duration_antara')[$key];
+            $dataAntara->pinalty = $request->get('pinalti_antara')[$key];
+            $dataAntara->save();
+        }
+
+        foreach ($request->get('item_draft_akhir') as $key=>$value) {
+            $dataDraftAkhir =new LaporanDraftAkhir();
+            $dataDraftAkhir->project_id = $id;
+            $dataDraftAkhir->activity= $value;
+            $dataDraftAkhir->duration_date = $request->get('duration_draft_akhir')[$key];
+            $dataDraftAkhir->pinalty = $request->get('pinalti_draft_akhir')[$key];
+            $dataDraftAkhir->save();
+        }
+
+        foreach ($request->get('item_akhir') as $key=>$value) {
+            $dataAkhir =new LaporanAkhir();
+            $dataAkhir->project_id = $id;
+            $dataAkhir->activity= $value;
+            $dataAkhir->duration_date = $request->get('duration_akhir')[$key];
+            $dataAkhir->pinalty = $request->get('pinalti_akhir')[$key];
+            $dataAkhir->save();
+        }
+
+        return redirect()->route('process-detail', ['id' => $id]);
+
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function loading($id)
+    {
+        $match_neighbour = [];
+        $data_pendahuluan = LaporanPendahuluan::where('project_id', $id)->get();
+        $data_antara = LaporanAntara::where('project_id', $id)->get();
+        $data_draft_akhir = LaporanDraftAkhir::where('project_id', $id)->get();
+        $data_akhir = LaporanAkhir::where('project_id', $id)->get();
+        $total_point = 0;
+
+        //pencocokan data pendahuluan dengan semua neighbour
+        foreach ($data_pendahuluan as $key=>$value) {
+            $total_point++;
+            $activity = $value->activity;
+            $neighbour = LaporanPendahuluan::where('activity', $activity)->where('project_id', '!=', $id)->get();
+
+            foreach ($neighbour as $key_neighbour=>$value_neighbour) {
+                $match_neighbour[] = [
+                    'project' => $value_neighbour->project_id,
+                    'score' => +1
+
+                ];
+            }
+        }
+
+        //pencocokan data antara dengan semua neighbour
+        foreach ($data_antara as $key=>$value) {
+            $total_point++;
+            $activity = $value->activity;
+            $neighbour = LaporanAntara::where('activity', $activity)->where('project_id', '!=', $id)->get();
+
+            foreach ($neighbour as $key_neighbour=>$value_neighbour) {
+                $match_neighbour[] = [
+                    'project' => $value_neighbour->project_id,
+                    'score' => +1
+
+                ];
+            }
+        }
+
+        //pencocokan data draft akhir dengan semua neighbour
+        foreach ($data_draft_akhir as $key=>$value) {
+            $total_point++;
+            $activity = $value->activity;
+            $neighbour = LaporanDraftAkhir::where('activity', $activity)->where('project_id', '!=', $id)->get();
+
+            foreach ($neighbour as $key_neighbour=>$value_neighbour) {
+                $match_neighbour[] = [
+                    'project' => $value_neighbour->project_id,
+                    'score' => +1
+
+                ];
+            }
+        }
+
+        //pencocokan data akhir dengan semua neighbour
+        foreach ($data_akhir as $key=>$value) {
+            $total_point++;
+            $activity = $value->activity;
+            $neighbour = LaporanAkhir::where('activity', $activity)->where('project_id', '!=', $id)->get();
+
+            foreach ($neighbour as $key_neighbour=>$value_neighbour) {
+                $match_neighbour[] = [
+                    'project' => $value_neighbour->project_id,
+                    'score' => +1
+
+                ];
+            }
+        }
+
+        //Collect hasil pencocokan dengan semua parameter
+        $collectedData = array();
+        foreach ($match_neighbour as $value) {
+            if (!isset($collectedData[$value['project']]))
+                $collectedData[$value['project']] = $value['score'];
+            else
+                $collectedData[$value['project']] += $value['score'];
+        }
+
+        //get data dari yang paling sesuai (ambil 3 neighbour)
+        ksort($collectedData);
+        $sumOfNeighbour = 0;
+        $limit = 3;
+
+        foreach ($collectedData as $key=>$value) {
+            if ($sumOfNeighbour < $limit) {
+
+                $percentage = round(($value / $total_point) * 100);
+                $resultProject =new ResultProject();
+                $resultProject->project_id = $id;
+                $resultProject->match_project_id= $key;
+                $resultProject->persentase = $percentage;
+                $resultProject->point_match = $value;
+                $resultProject->save();
+
+            }
+            $sumOfNeighbour++;
+        }
+
+        return view('project.loading', compact('id'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function result($id)
+    {
+        var_dump($id);exit;
         return view('project.result');
     }
 
