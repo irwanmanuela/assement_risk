@@ -137,36 +137,48 @@ class ProjectController extends Controller
         $id = $request->get('id');
 
         foreach ($request->get('item_pendahuluan') as $key=>$value) {
+            $data = MasterDataLaporan::where('id', $value)->get();
             $dataPendahuluan =new LaporanPendahuluan();
             $dataPendahuluan->project_id = $id;
-            $dataPendahuluan->activity= $value;
+            $dataPendahuluan->activity_id= $value;
+            $dataPendahuluan->activity_name= $data[0]->activity;
+            $dataPendahuluan->activity_desc = $request->get('desc_pendahuluan')[$key];
             $dataPendahuluan->duration_date = $request->get('duration_pendahuluan')[$key];
             $dataPendahuluan->pinalty = $request->get('pinalti_pendahuluan')[$key];
             $dataPendahuluan->save();
         }
 
         foreach ($request->get('item_antara') as $key=>$value) {
+            $data = MasterDataLaporan::where('id', $value)->get();
             $dataAntara =new LaporanAntara();
             $dataAntara->project_id = $id;
-            $dataAntara->activity= $value;
+            $dataAntara->activity_id= $value;
+            $dataAntara->activity_name= $data[0]->activity;
+            $dataAntara->activity_desc = $request->get('desc_antara')[$key];
             $dataAntara->duration_date = $request->get('duration_antara')[$key];
             $dataAntara->pinalty = $request->get('pinalti_antara')[$key];
             $dataAntara->save();
         }
 
         foreach ($request->get('item_draft_akhir') as $key=>$value) {
+            $data = MasterDataLaporan::where('id', $value)->get();
             $dataDraftAkhir =new LaporanDraftAkhir();
             $dataDraftAkhir->project_id = $id;
-            $dataDraftAkhir->activity= $value;
+            $dataDraftAkhir->activity_id = $value;
+            $dataDraftAkhir->activity_name= $data[0]->activity;
+            $dataDraftAkhir->activity_desc = $request->get('desc_draft_akhir')[$key];
             $dataDraftAkhir->duration_date = $request->get('duration_draft_akhir')[$key];
             $dataDraftAkhir->pinalty = $request->get('pinalti_draft_akhir')[$key];
             $dataDraftAkhir->save();
         }
 
         foreach ($request->get('item_akhir') as $key=>$value) {
+            $data = MasterDataLaporan::where('id', $value)->get();
             $dataAkhir =new LaporanAkhir();
             $dataAkhir->project_id = $id;
-            $dataAkhir->activity= $value;
+            $dataAkhir->activity_id = $value;
+            $dataAkhir->activity_name= $data[0]->activity;
+            $dataAkhir->activity_desc = $request->get('desc_akhir')[$key];
             $dataAkhir->duration_date = $request->get('duration_akhir')[$key];
             $dataAkhir->pinalty = $request->get('pinalti_akhir')[$key];
             $dataAkhir->save();
@@ -193,8 +205,8 @@ class ProjectController extends Controller
         //pencocokan data pendahuluan dengan semua neighbour
         foreach ($data_pendahuluan as $key=>$value) {
             $total_point++;
-            $activity = $value->activity;
-            $neighbour = LaporanPendahuluan::where('activity', $activity)->where('project_id', '!=', $id)->get();
+            $activity = $value->activity_id;
+            $neighbour = LaporanPendahuluan::where('activity_id', $activity)->where('project_id', '!=', $id)->get();
 
             foreach ($neighbour as $key_neighbour=>$value_neighbour) {
                 $match_neighbour[] = [
@@ -208,8 +220,8 @@ class ProjectController extends Controller
         //pencocokan data antara dengan semua neighbour
         foreach ($data_antara as $key=>$value) {
             $total_point++;
-            $activity = $value->activity;
-            $neighbour = LaporanAntara::where('activity', $activity)->where('project_id', '!=', $id)->get();
+            $activity = $value->activity_id;
+            $neighbour = LaporanAntara::where('activity_id', $activity)->where('project_id', '!=', $id)->get();
 
             foreach ($neighbour as $key_neighbour=>$value_neighbour) {
                 $match_neighbour[] = [
@@ -223,8 +235,8 @@ class ProjectController extends Controller
         //pencocokan data draft akhir dengan semua neighbour
         foreach ($data_draft_akhir as $key=>$value) {
             $total_point++;
-            $activity = $value->activity;
-            $neighbour = LaporanDraftAkhir::where('activity', $activity)->where('project_id', '!=', $id)->get();
+            $activity = $value->activity_id;
+            $neighbour = LaporanDraftAkhir::where('activity_id', $activity)->where('project_id', '!=', $id)->get();
 
             foreach ($neighbour as $key_neighbour=>$value_neighbour) {
                 $match_neighbour[] = [
@@ -238,8 +250,8 @@ class ProjectController extends Controller
         //pencocokan data akhir dengan semua neighbour
         foreach ($data_akhir as $key=>$value) {
             $total_point++;
-            $activity = $value->activity;
-            $neighbour = LaporanAkhir::where('activity', $activity)->where('project_id', '!=', $id)->get();
+            $activity = $value->activity_id;
+            $neighbour = LaporanAkhir::where('activity_id', $activity)->where('project_id', '!=', $id)->get();
 
             foreach ($neighbour as $key_neighbour=>$value_neighbour) {
                 $match_neighbour[] = [
@@ -289,8 +301,27 @@ class ProjectController extends Controller
      */
     public function result($id)
     {
-        var_dump($id);exit;
-        return view('project.result');
+        $data_project = project::where('id', $id)->get();
+        $data_pendahuluan = LaporanPendahuluan::where('project_id', $id)->get();
+        $data_antara = LaporanAntara::where('project_id', $id)->get();
+        $data_draft_akhir = LaporanDraftAkhir::where('project_id', $id)->get();
+        $data_akhir = LaporanAkhir::where('project_id', $id)->get();
+
+        $data_matching = ResultProject::where('project_id', $id)->orderByDesc('persentase')->get();
+
+        foreach ($data_matching as $key=>$project_match) {
+            $match_project_id = $project_match->match_project_id;
+
+            $data_project_match[$key] = project::where('id', $match_project_id)->get();
+
+            $data_pendahuluan_match[$key][] = LaporanPendahuluan::where('project_id', $match_project_id)->get();
+            $data_antara_match[$key][] = LaporanAntara::where('project_id', $match_project_id)->get();
+            $data_draft_akhir_match[$key][] = LaporanDraftAkhir::where('project_id', $match_project_id)->get();
+            $data_akhir_match[$key][] = LaporanAkhir::where('project_id', $match_project_id)->get();
+        }
+
+
+        return view('project.result', compact('id', 'data_project', 'data_pendahuluan', 'data_antara', 'data_draft_akhir', 'data_akhir','data_matching' , 'data_project_match', 'data_pendahuluan_match', 'data_antara_match', 'data_draft_akhir_match', 'data_akhir_match'));
     }
 
     /**

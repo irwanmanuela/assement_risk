@@ -26,9 +26,14 @@
                                                         <H4>Laporan Pendahuluan</H4>
                                                         <div class="col-sm-11">
                                                             <div class="row">
-                                                                <div class="col-sm-6">
+                                                                <div class="col-sm-4">
                                                                     <div class="form-group">
                                                                         <label for="" class="control-label">Aktivitas</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <label for="" class="control-label">Deskripsi</label>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-2">
@@ -54,15 +59,21 @@
                                                     <div class="row">
                                                         <div class="col-sm-11">
                                                             <div class="row">
-                                                                <div class="col-sm-6">
+                                                                <div class="col-sm-4">
                                                                     <div class="form-group">
                                                                         <select class="js-example-basic-multiple full-width"  name="item_pendahuluan[]" data-placeholder="-- Pilih --" data-init-plugin="select2">
                                                                             <option></option>
                                                                             @foreach($data_pendahuluan as $data)
-                                                                                <option class="" value="1" selected data-id = "1">{{ $data->activity }}</option>
+                                                                                <option class="" value="{{ $data->id }}" selected data-id = "{{ $data->id }}">{{ $data->activity }}</option>
                                                                             @endforeach
 
                                                                         </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <input type="text" class="form-control order" data-error="wajib diisi" id="order" placeholder="Deskripsi" required name="desc_pendahuluan[]" aria-required="true" value="">
+                                                                        <div class="help-block with-errors"></div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-2">
@@ -115,9 +126,14 @@
                                                         <H4>Laporan Antara</H4>
                                                         <div class="col-sm-11">
                                                             <div class="row">
-                                                                <div class="col-sm-6">
+                                                                <div class="col-sm-4">
                                                                     <div class="form-group">
                                                                         <label for="" class="control-label">Aktivitas</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <label for="" class="control-label">Deskripsi</label>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-2">
@@ -143,14 +159,20 @@
                                                     <div class="row">
                                                         <div class="col-sm-11">
                                                             <div class="row">
-                                                                <div class="col-sm-6">
+                                                                <div class="col-sm-4">
                                                                     <div class="form-group">
                                                                         <select class="js-example-basic-multiple full-width select2 choosen" id=""  name="item_antara[]" data-placeholder="-- Pilih --" data-init-plugin="select2">
                                                                             @foreach($data_antara as $data)
-                                                                                <option class="" value="1" selected data-id = "1">{{ $data->activity }}</option>
+                                                                                <option class="" value="{{ $data->id }}" selected data-id = "{{ $data->id }}">{{ $data->activity }}</option>
                                                                             @endforeach
 
                                                                         </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <input type="text" class="form-control order" data-error="wajib diisi" id="order" placeholder="Deskripsi" required name="desc_antara[]" aria-required="true" value="">
+                                                                        <div class="help-block with-errors"></div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-2">
@@ -203,9 +225,14 @@
                                                         <H4>Laporan Draft Akhir</H4>
                                                         <div class="col-sm-11">
                                                             <div class="row">
-                                                                <div class="col-sm-6">
+                                                                <div class="col-sm-4">
                                                                     <div class="form-group">
                                                                         <label for="" class="control-label">Aktivitas</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <label for="" class="control-label">Deskripsi</label>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-2">
@@ -231,15 +258,21 @@
                                                     <div class="row">
                                                         <div class="col-sm-11">
                                                             <div class="row">
-                                                                <div class="col-sm-6">
+                                                                <div class="col-sm-4">
                                                                     <div class="form-group">
                                                                         <select class="js-example-basic-multiple full-width select2 choosen" id=""  name="item_draft_akhir[]" data-placeholder="-- Pilih --" data-init-plugin="select2">
                                                                             <option></option>
                                                                             @foreach($data_draft_akhir as $data)
-                                                                                <option class="" value="1" selected data-id = "1">{{ $data->activity }}</option>
+                                                                                <option class="" value="{{ $data->id }}" selected data-id = "{{ $data->id }}">{{ $data->activity }}</option>
                                                                             @endforeach
 
                                                                         </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <input type="text" class="form-control order" data-error="wajib diisi" id="order" placeholder="Deskripsi" required name="desc_draft_akhir[]" aria-required="true" value="">
+                                                                        <div class="help-block with-errors"></div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-2">
@@ -292,9 +325,14 @@
                                                         <H4>Laporan Akhir</H4>
                                                         <div class="col-sm-11">
                                                             <div class="row">
-                                                                <div class="col-sm-6">
+                                                                <div class="col-sm-4">
                                                                     <div class="form-group">
                                                                         <label for="" class="control-label">Aktivitas</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <label for="" class="control-label">Deskripsi</label>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-2">
@@ -320,14 +358,20 @@
                                                     <div class="row">
                                                         <div class="col-sm-11">
                                                             <div class="row">
-                                                                <div class="col-sm-6">
+                                                                <div class="col-sm-4">
                                                                     <div class="form-group">
                                                                         <select class="js-example-basic-multiple full-width select2 choosen" id=""  name="item_akhir[]" data-placeholder="-- Pilih --" data-init-plugin="select2">
                                                                             @foreach($data_akhir as $data)
-                                                                                <option class="" value="1" selected data-id = "1">{{ $data->activity }}</option>
+                                                                                <option class="" value="{{ $data->id }}" selected data-id = "{{ $data->id }}">{{ $data->activity }}</option>
                                                                             @endforeach
 
                                                                         </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <input type="text" class="form-control order" data-error="wajib diisi" id="order" placeholder="Deskripsi" required name="desc_akhir[]" aria-required="true" value="">
+                                                                        <div class="help-block with-errors"></div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-2">
@@ -412,7 +456,7 @@
             $.get(url, function(data) {
                 $(".list-items-antara").append(data);
                 $("#pendahuluan").select2("destroy").select2({});
-                $(".js-example-basic-multiple").select2();
+                $(".js-example-basic-multiplean").select2();
                 $(".no-item").remove();
             }).done(function() {
             });
@@ -428,7 +472,7 @@
             $.get(url, function(data) {
                 $(".list-items-draft-akhir").append(data);
                 $("#pendahuluan").select2("destroy").select2({});
-                $(".js-example-basic-multiple").select2();
+                $(".js-example-basic-multipleda").select2();
                 $(".no-item").remove();
             }).done(function() {
             });
@@ -446,7 +490,7 @@
                 $(".list-items-akhir").append(data);
 
                 $("#pendahuluan").select2("destroy").select2({});
-                $(".js-example-basic-multiple").select2();
+                $(".js-example-basic-multiplea").select2();
 
                 $(".no-item").remove();
             }).done(function() {

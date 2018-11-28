@@ -19,6 +19,7 @@ class ResultProject extends Migration
             $table->string('match_project_id');
             $table->string('persentase');
             $table->integer('point_match');
+            $table->timestamps();
 
         });
     }
