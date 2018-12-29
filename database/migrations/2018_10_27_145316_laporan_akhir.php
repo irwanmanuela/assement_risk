@@ -17,7 +17,10 @@ class LaporanAkhir extends Migration
             $table->increments('id');
             $table->string('project_id');
             $table->timestamps();
-            $table->string('activity');
+            $table->string('activity_id');
+            $table->text('activity_name');
+            $table->text('activity_desc');
+            $table->text('activity_solution')->nullable();
             $table->integer('duration_date');
             $table->string('pinalty');
         });

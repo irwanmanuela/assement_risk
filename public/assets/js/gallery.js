@@ -46,10 +46,26 @@ $(function() {
         Toggle detail view using DialogFx
         http://tympanus.net/Development/DialogEffects/
     */
-    $('body').on('click', '.gallery-item', function() {
+    $('body').on('click', '.gallery-item-awal', function() {
         var dlg = new DialogFx($('#itemDetails').get(0));
         dlg.toggle();
     });
+
+    $('body').on('click', '.gallery-item-result-1', function() {
+        var dlg = new DialogFx($('#itemDetails1').get(0));
+        dlg.toggle();
+    });
+
+    $('body').on('click', '.gallery-item-result-2', function() {
+        var dlg = new DialogFx($('#itemDetails2').get(0));
+        dlg.toggle();
+    });
+
+    $('body').on('click', '.gallery-item-result-3', function() {
+        var dlg = new DialogFx($('#itemDetails3').get(0));
+        dlg.toggle();
+    });
+
 
     /*
         Look for data-image attribute and apply those
