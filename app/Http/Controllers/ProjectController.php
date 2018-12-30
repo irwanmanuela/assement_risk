@@ -332,7 +332,14 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        //
+        $data_project = project::where('id', $id)->get();
+        $data_pendahuluan = LaporanPendahuluan::where('project_id', $id)->get();
+        $data_antara = LaporanAntara::where('project_id', $id)->get();
+        $data_draft_akhir = LaporanDraftAkhir::where('project_id', $id)->get();
+        $data_akhir = LaporanAkhir::where('project_id', $id)->get();
+
+        return view('project.project_detail', compact('id', 'data_project', 'data_pendahuluan', 'data_antara', 'data_draft_akhir', 'data_akhir'));
+
     }
 
     /**
