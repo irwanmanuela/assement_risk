@@ -4,12 +4,17 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <select class="js-example-basic-multiplea full-width select2 choosen" id=""  name="item_akhir[]" data-placeholder="-- Pilih --" data-init-plugin="select2">
-                            @foreach($data_akhir as $data)
-                                <option class="" value="{{ $data->id }}" selected data-id = "{{ $data->id }}">{{ $data->activity }}</option>
-                            @endforeach
+                        {{--<select class="js-example-basic-multiplea full-width select2 choosen" id=""  name="item_akhir[]" data-placeholder="-- Pilih --" data-init-plugin="select2">--}}
+                            {{--@foreach($data_akhir as $data)--}}
+                                {{--<option class="" value="{{ $data->id }}" selected data-id = "{{ $data->id }}">{{ $data->activity }}</option>--}}
+                            {{--@endforeach--}}
 
-                        </select>
+                        {{--</select>--}}
+
+                        <div class="form-group">
+                            <input type="text" class="form-control order" data-error="wajib diisi" id="order" placeholder="Masalah" required name="item_akhir[]" aria-required="true" value="">
+                            <div class="help-block with-errors"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-3">

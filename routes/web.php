@@ -18,6 +18,7 @@ Route::get('project/add-item-akhir', 'ProjectController@addItemLaporanAkhirActio
 Route::post('project/save-detail', 'ProjectController@saveDetailAction')->name('save-detail');
 Route::get('project/loading/{id}', 'ProjectController@loading')->name('process-detail');
 Route::get('result/{id}', 'ProjectController@result');
+Route::get('converting', 'ProjectController@converting')->name('converting');
 Route::get('project/detail/{id}', 'ProjectController@project_detail')->name('project-detail');
 Route::resource('project','ProjectController');
 Auth::routes();

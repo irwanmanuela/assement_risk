@@ -125,7 +125,7 @@
     });
 
     setTimeout(function () {
-        window.location.href = "/result/{{ $id }}";
+        window.location.href = "/project/{{ $id }}";
     }, 1600);
 
 </script>
