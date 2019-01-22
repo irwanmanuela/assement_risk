@@ -597,21 +597,25 @@ class ProjectController extends Controller
         $data_pendahuluan = DB::table('laporan_pendahuluan')
             ->join('result_project', 'laporan_pendahuluan.id', '=', 'result_project.project_id')
             ->where('laporan_pendahuluan.project_id', $id)
+            ->groupBy('laporan_pendahuluan.id')
             ->get();
 
         $data_antara = DB::table('laporan_antara')
             ->join('result_project', 'laporan_antara.id', '=', 'result_project.project_id')
             ->where('laporan_antara.project_id', $id)
+            ->groupBy('laporan_antara.id')
             ->get();
 
         $data_draft_akhir= DB::table('laporan_akhir_draft')
             ->join('result_project', 'laporan_akhir_draft.id', '=', 'result_project.project_id')
             ->where('laporan_akhir_draft.project_id', $id)
+            ->groupBy('laporan_akhir_draft.id')
             ->get();
 
         $data_akhir = DB::table('laporan_akhir')
             ->join('result_project', 'laporan_akhir.id', '=', 'result_project.project_id')
             ->where('laporan_akhir.project_id', $id)
+            ->groupBy('laporan_akhir.id')
             ->get();
 
 

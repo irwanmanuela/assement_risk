@@ -12,384 +12,282 @@
                         <div class="panel-body">
                             <div class="m-t-10">
                                 <input type="hidden"  name="id" value="{{ $id }}">
-                                {{--<div class="form-group">--}}
-                                    {{--<label for="stock" class="control-label">Catatan</label>--}}
-                                    {{--<textarea class="form-control" id="notes" name="notes" placeholder="catatan tambahan " rows="3" aria-invalid="false">asdasd</textarea>--}}
-                                    {{--<div class="help-block with-errors"></div>--}}
-                                {{--</div>--}}
                                 <div class="panel panel-default">
                                     <div class="panel-body">
                                         <div class="mixed-data">
-                                            <ol class="list-block-mode">
-                                                <li class="block">
-                                                    <div class="row">
-                                                        <H4>Laporan Pendahuluan</H4>
-                                                        <div class="col-sm-11">
-                                                            <div class="row">
-                                                                <div class="col-sm-4">
-                                                                    <div class="form-group">
-                                                                        <label for="" class="control-label">Permasalahan</label>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <div class="form-group">
-                                                                        <label for="" class="control-label">Deskripsi</label>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    <div class="form-group">
-                                                                        <label for="" class="control-label">Durasi</label>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    <div class="form-group">
-                                                                        <label for="" class="control-label">Pinalti</label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1">
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ol>
-
-                                            <ol class="list-block-mode list-items-pendahuluan">
-                                                <li class="block">
-                                                    <div class="row">
-                                                        <div class="col-sm-11">
-                                                            <div class="row">
-                                                                <div class="col-sm-4">
-                                                                    <div class="form-group">
-                                                                        <div class="form-group">
-                                                                            <input type="text" class="form-control order" data-error="wajib diisi" id="order" placeholder="Masalah" required name="item_pendahuluan[]" aria-required="true" value="{{ $data_pendahuluan[0]->activity_name }}">
-                                                                            <div class="help-block with-errors"></div>
+                                            <div class="container-fluid container-fixed-lg">
+                                                <!-- START PANEL -->
+                                                <div class="panel panel-transparent">
+                                                    <div class="panel-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-10">
+                                                                <h3>Laporan Pendahuluan</h3>
+                                                                <p>Jika Solusi tidak sesuai anda dapat melakukan perubahan data dengan mempertimbangkan solusi yang paling sesuai.
+                                                                </p>
+                                                                @foreach($data_pendahuluan as $pendahuluan)
+                                                                    <div>
+                                                                        <div class="form-group ">
+                                                                            <label for="fname" class="col-sm-3 control-label">Permasalahan</label>
+                                                                            <div class="col-sm-9 m-b-10">
+                                                                                <input type="text" class="form-control" id="fname" placeholder="" name="name" value="{{ $pendahuluan->activity_name }}" required>
+                                                                            </div>
                                                                         </div>
+                                                                        <div class="form-group m-t-10">
+                                                                            <label for="name" class="col-sm-3 control-label">Description</label>
+                                                                            <div class="col-sm-9 m-b-10">
+                                                                                <textarea class="form-control" id="name" placeholder="">{{ $pendahuluan->activity_desc }}</textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Duration</label>
+                                                                            <div class="col-sm-9">
+                                                                                {{--<p>Have you Worked at page Inc. before, Or joined the Pages Supirior Club?</p>--}}
+                                                                                {{--<p class="hint-text small">If yes State which Place, if yes note date and Job CODE / Membership Number</p>--}}
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-1">
+                                                                                        <label for="fname" class="col-sm-3 control-label">Month</label>
+                                                                                    </div>
+                                                                                    <div class="col-sm-5">
+                                                                                        <input type="text" class="form-control" placeholder="" value="{{ $pendahuluan->duration_date }}" required>
+                                                                                    </div>
+                                                                                    <div class="col-sm-1">
+                                                                                        <label for="fname" class="col-sm-3 control-label">Pinalti</label>
+
+                                                                                    </div>
+                                                                                    <div class="col-sm-5 sm-m-t-10 m-b-10">
+                                                                                        <input type="text" placeholder="" class="form-control" value="{{$pendahuluan->pinalty}}">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group ">
+                                                                            <label for="fname" class="col-sm-3 control-label">Risk</label>
+                                                                            <div class="col-sm-9 m-b-10">
+                                                                                <input type="text" class="form-control" id="risk" placeholder="" name="risk" value="{{ $pendahuluan->activity_risk }}" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group m-t-10">
+                                                                            <label for="name" class="col-sm-3 control-label">Solution</label>
+                                                                            <div class="col-sm-8 m-b-10">
+                                                                                <textarea class="form-control" id="solution" placeholder="">{{ $pendahuluan->activity_solution }}</textarea>
+                                                                            </div>
+                                                                            <div class="col-sm-1 m-b-10">
+                                                                                <button class="btn btn-success" style="height: 50px"><i class="pg-close"></i> {{ $pendahuluan->persentase }} %</button>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <br>
+                                                                        <hr>
                                                                     </div>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <div class="form-group">
-                                                                        <input type="text" class="form-control order" data-error="wajib diisi" id="order" placeholder="Deskripsi" required name="desc_pendahuluan[]" aria-required="true" value="">
-                                                                        <div class="help-block with-errors"></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    <div class="form-group">
-                                                                        <input type="text" class="form-control order" data-error="wajib diisi" id="order" placeholder="0 Month" required name="duration_pendahuluan[]" aria-required="true" value="">
-                                                                        <div class="help-block with-errors"></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    <div class="form-group">
-                                                                        <input type="text" class="form-control order" data-error="wajib diisi" id="order" placeholder="Rp. 0,-" required name="pinalti_pendahuluan[]" aria-required="true" value="">
-                                                                        <div class="help-block with-errors"></div>
-                                                                    </div>
-                                                                </div>
+                                                                @endforeach
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </li>
-                                            </ol>
-
-                                            <div class="clearfix"></div>
-
-                                            <ol class="list-inline list-block-mode ">
-                                                <li class="">
-                                                    <div class="row clearfix">
-                                                        <div class="col-sm-11">
-                                                            <div class="row">
-                                                                <div class="col-sm-12 m-l-45">
-                                                                    <input type="text" class="form-control order" data-error="wajib diisi" id="order" placeholder="Masalah" required name="item_pendahuluan[]" aria-required="true" value="{{ $data_pendahuluan[0]->activity_name }}">
-                                                                    <div class="help-block with-errors"></div>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="col-sm-1"></div>
-                                                    </div>
-                                                </li>
-                                            </ol>
+                                                </div>
+                                                <!-- END PANEL -->
+                                            </div>
+                                            <!-- END CONTAINER FLUID -->
                                         </div>
                                     </div>
                                 </div>
                                 <div class="panel panel-default">
                                     <div class="panel-body">
                                         <div class="mixed-data">
-                                            <ol class="list-block-mode">
-                                                <li class="block">
-                                                    <div class="row">
-                                                        <H4>Laporan Antara</H4>
-                                                        <div class="col-sm-11">
-                                                            <div class="row">
-                                                                <div class="col-sm-4">
-                                                                    <div class="form-group">
-                                                                        <label for="" class="control-label">Aktivitas</label>
+                                            <div class="col-sm-10">
+                                                <h3>Laporan Antara</h3>
+                                                <p>Jika Solusi tidak sesuai anda dapat melakukan perubahan data dengan mempertimbangkan solusi yang paling sesuai.
+                                                </p>
+                                                @foreach($data_antara as $pendahuluan)
+                                                    <div>
+                                                        <div class="form-group ">
+                                                            <label for="fname" class="col-sm-3 control-label">Permasalahan</label>
+                                                            <div class="col-sm-9 m-b-10">
+                                                                <input type="text" class="form-control" id="fname" placeholder="" name="name" value="{{ $pendahuluan->activity_name }}" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group m-t-10">
+                                                            <label for="name" class="col-sm-3 control-label">Description</label>
+                                                            <div class="col-sm-9 m-b-10">
+                                                                <textarea class="form-control" id="name" placeholder="">{{ $pendahuluan->activity_desc }}</textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">Duration</label>
+                                                            <div class="col-sm-9">
+                                                                {{--<p>Have you Worked at page Inc. before, Or joined the Pages Supirior Club?</p>--}}
+                                                                {{--<p class="hint-text small">If yes State which Place, if yes note date and Job CODE / Membership Number</p>--}}
+                                                                <div class="row">
+                                                                    <div class="col-sm-1">
+                                                                        <label for="fname" class="col-sm-3 control-label">Month</label>
                                                                     </div>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <div class="form-group">
-                                                                        <label for="" class="control-label">Deskripsi</label>
+                                                                    <div class="col-sm-5">
+                                                                        <input type="text" class="form-control" placeholder="" value="{{ $pendahuluan->duration_date }}" required>
                                                                     </div>
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    <div class="form-group">
-                                                                        <label for="" class="control-label">Durasi</label>
+                                                                    <div class="col-sm-1">
+                                                                        <label for="fname" class="col-sm-3 control-label">Pinalti</label>
+
                                                                     </div>
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    <div class="form-group">
-                                                                        <label for="" class="control-label">Pinalti</label>
+                                                                    <div class="col-sm-5 sm-m-t-10 m-b-10">
+                                                                        <input type="text" placeholder="" class="form-control" value="{{$pendahuluan->pinalty}}">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-1">
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ol>
-
-                                            <ol class="list-block-mode list-items-antara">
-                                                <li class="block">
-                                                    <div class="row">
-                                                        <div class="col-sm-11">
-                                                            <div class="row">
-                                                                <div class="col-sm-4">
-                                                                    <div class="form-group">
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <div class="form-group">
-                                                                        <input type="text" class="form-control order" data-error="wajib diisi" id="order" placeholder="Deskripsi" required name="desc_antara[]" aria-required="true" value="">
-                                                                        <div class="help-block with-errors"></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    <div class="form-group">
-                                                                        <input type="text" class="form-control order" data-error="wajib diisi" id="order" placeholder="0 Month" required name="duration_antara[]" aria-required="true">
-                                                                        <div class="help-block with-errors"></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    <div class="form-group">
-                                                                        <input type="text" class="form-control order" data-error="wajib diisi" id="order" placeholder="Rp. 0,-" required name="pinalti_antara[]" aria-required="true" >
-                                                                        <div class="help-block with-errors"></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <button type="button" class="remove-invite btn btn-danger btn-sm" aria-hidden="true"><i class="pg-close"></i>x
-                                                                    </button>
-                                                                </div>
+                                                        <div class="form-group ">
+                                                            <label for="fname" class="col-sm-3 control-label">Risk</label>
+                                                            <div class="col-sm-9 m-b-10">
+                                                                <input type="text" class="form-control" id="risk" placeholder="" name="risk" value="{{ $pendahuluan->activity_risk }}" required>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </li>
-                                            </ol>
-
-                                            <div class="clearfix"></div>
-
-                                            <ol class="list-inline list-block-mode ">
-                                                <li class="block">
-                                                    <div class="row clearfix">
-                                                        <div class="col-sm-11">
-                                                            <div class="row">
-                                                                <div class="col-sm-12 m-l-45">
-                                                                    <button class="btn btn-default btn-gray m-r-10 add-more-item-antara bold600" type="button"><i class="fa fa-plus-circle"></i> Tambah</button>
-                                                                </div>
+                                                        <div class="form-group m-t-10">
+                                                            <label for="name" class="col-sm-3 control-label">Solution</label>
+                                                            <div class="col-sm-8 m-b-10">
+                                                                <textarea class="form-control" id="solution" placeholder="">{{ $pendahuluan->activity_solution }}</textarea>
+                                                            </div>
+                                                            <div class="col-sm-1 m-b-10">
+                                                                <button class="btn btn-success" style="height: 50px"><i class="pg-close"></i> {{ $pendahuluan->persentase }} %</button>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-1"></div>
+
+                                                        <br>
+                                                        <hr>
                                                     </div>
-                                                </li>
-                                            </ol>
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="panel panel-default">
                                     <div class="panel-body">
                                         <div class="mixed-data">
-                                            <ol class="list-block-mode">
-                                                <li class="block">
-                                                    <div class="row">
-                                                        <H4>Laporan Draft Akhir</H4>
-                                                        <div class="col-sm-11">
-                                                            <div class="row">
-                                                                <div class="col-sm-4">
-                                                                    <div class="form-group">
-                                                                        <label for="" class="control-label">Aktivitas</label>
+                                            <div class="col-sm-10">
+                                                <h3>Laporan Draft Akhir</h3>
+                                                <p>Jika Solusi tidak sesuai anda dapat melakukan perubahan data dengan mempertimbangkan solusi yang paling sesuai.
+                                                </p>
+                                                @foreach($data_draft_akhir as $pendahuluan)
+                                                    <div>
+                                                        <div class="form-group ">
+                                                            <label for="fname" class="col-sm-3 control-label">Permasalahan</label>
+                                                            <div class="col-sm-9 m-b-10">
+                                                                <input type="text" class="form-control" id="fname" placeholder="" name="name" value="{{ $pendahuluan->activity_name }}" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group m-t-10">
+                                                            <label for="name" class="col-sm-3 control-label">Description</label>
+                                                            <div class="col-sm-9 m-b-10">
+                                                                <textarea class="form-control" id="name" placeholder="">{{ $pendahuluan->activity_desc }}</textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">Duration</label>
+                                                            <div class="col-sm-9">
+                                                                {{--<p>Have you Worked at page Inc. before, Or joined the Pages Supirior Club?</p>--}}
+                                                                {{--<p class="hint-text small">If yes State which Place, if yes note date and Job CODE / Membership Number</p>--}}
+                                                                <div class="row">
+                                                                    <div class="col-sm-1">
+                                                                        <label for="fname" class="col-sm-3 control-label">Month</label>
                                                                     </div>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <div class="form-group">
-                                                                        <label for="" class="control-label">Deskripsi</label>
+                                                                    <div class="col-sm-5">
+                                                                        <input type="text" class="form-control" placeholder="" value="{{ $pendahuluan->duration_date }}" required>
                                                                     </div>
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    <div class="form-group">
-                                                                        <label for="" class="control-label">Durasi</label>
+                                                                    <div class="col-sm-1">
+                                                                        <label for="fname" class="col-sm-3 control-label">Pinalti</label>
+
                                                                     </div>
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    <div class="form-group">
-                                                                        <label for="" class="control-label">Pinalti</label>
+                                                                    <div class="col-sm-5 sm-m-t-10 m-b-10">
+                                                                        <input type="text" placeholder="" class="form-control" value="{{$pendahuluan->pinalty}}">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-1">
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ol>
-
-                                            <ol class="list-block-mode list-items-draft-akhir">
-                                                <li class="block">
-                                                    <div class="row">
-                                                        <div class="col-sm-11">
-                                                            <div class="row">
-                                                                <div class="col-sm-4">
-                                                                    <div class="form-group">
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <div class="form-group">
-                                                                        <input type="text" class="form-control order" data-error="wajib diisi" id="order" placeholder="Deskripsi" required name="desc_draft_akhir[]" aria-required="true" value="">
-                                                                        <div class="help-block with-errors"></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    <div class="form-group">
-                                                                        <input type="text" class="form-control order" data-error="wajib diisi" id="order" placeholder="0 Month" required name="duration_draft_akhir[]" aria-required="true">
-                                                                        <div class="help-block with-errors"></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    <div class="form-group">
-                                                                        <input type="text" class="form-control order" data-error="wajib diisi" id="order" placeholder="Rp. 0,-" required name="pinalti_draft_akhir[]" aria-required="true" >
-                                                                        <div class="help-block with-errors"></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <button type="button" class="remove-invite btn btn-danger btn-sm" aria-hidden="true"><i class="pg-close"></i>x
-                                                                    </button>
-                                                                </div>
+                                                        <div class="form-group ">
+                                                            <label for="fname" class="col-sm-3 control-label">Risk</label>
+                                                            <div class="col-sm-9 m-b-10">
+                                                                <input type="text" class="form-control" id="risk" placeholder="" name="risk" value="{{ $pendahuluan->activity_risk }}" required>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </li>
-                                            </ol>
-
-                                            <div class="clearfix"></div>
-
-                                            <ol class="list-inline list-block-mode ">
-                                                <li class="block">
-                                                    <div class="row clearfix">
-                                                        <div class="col-sm-11">
-                                                            <div class="row">
-                                                                <div class="col-sm-12 m-l-45">
-                                                                    <button class="btn btn-default btn-gray m-r-10 add-more-item-draft-akhir bold600" type="button"><i class="fa fa-plus-circle"></i> Tambah</button>
-                                                                </div>
+                                                        <div class="form-group m-t-10">
+                                                            <label for="name" class="col-sm-3 control-label">Solution</label>
+                                                            <div class="col-sm-8 m-b-10">
+                                                                <textarea class="form-control" id="solution" placeholder="">{{ $pendahuluan->activity_solution }}</textarea>
+                                                            </div>
+                                                            <div class="col-sm-1 m-b-10">
+                                                                <button class="btn btn-success" style="height: 50px"><i class="pg-close"></i> {{ $pendahuluan->persentase }} %</button>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-1"></div>
+
+                                                        <br>
+                                                        <hr>
                                                     </div>
-                                                </li>
-                                            </ol>
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="panel panel-default">
                                     <div class="panel-body">
                                         <div class="mixed-data">
-                                            <ol class="list-block-mode">
-                                                <li class="block">
-                                                    <div class="row">
-                                                        <H4>Laporan Akhir</H4>
-                                                        <div class="col-sm-11">
-                                                            <div class="row">
-                                                                <div class="col-sm-4">
-                                                                    <div class="form-group">
-                                                                        <label for="" class="control-label">Aktivitas</label>
+                                            <div class="col-sm-10">
+                                                <h3>Laporan Akhir</h3>
+                                                <p>Jika Solusi tidak sesuai anda dapat melakukan perubahan data dengan mempertimbangkan solusi yang paling sesuai.
+                                                </p>
+                                                @foreach($data_akhir as $akhir)
+                                                    <div>
+                                                        <div class="form-group ">
+                                                            <label for="fname" class="col-sm-3 control-label">Permasalahan</label>
+                                                            <div class="col-sm-9 m-b-10">
+                                                                <input type="text" class="form-control" id="fname" placeholder="" name="name" value="{{ $akhir->activity_name }}" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group m-t-10">
+                                                            <label for="name" class="col-sm-3 control-label">Description</label>
+                                                            <div class="col-sm-9 m-b-10">
+                                                                <textarea class="form-control" id="name" placeholder="">{{ $akhir->activity_desc }}</textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">Duration</label>
+                                                            <div class="col-sm-9">
+                                                                {{--<p>Have you Worked at page Inc. before, Or joined the Pages Supirior Club?</p>--}}
+                                                                {{--<p class="hint-text small">If yes State which Place, if yes note date and Job CODE / Membership Number</p>--}}
+                                                                <div class="row">
+                                                                    <div class="col-sm-1">
+                                                                        <label for="fname" class="col-sm-3 control-label">Month</label>
                                                                     </div>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <div class="form-group">
-                                                                        <label for="" class="control-label">Deskripsi</label>
+                                                                    <div class="col-sm-5">
+                                                                        <input type="text" class="form-control" placeholder="" value="{{ $akhir->duration_date }}" required>
                                                                     </div>
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    <div class="form-group">
-                                                                        <label for="" class="control-label">Durasi</label>
+                                                                    <div class="col-sm-1">
+                                                                        <label for="fname" class="col-sm-3 control-label">Pinalti</label>
+
                                                                     </div>
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    <div class="form-group">
-                                                                        <label for="" class="control-label">Pinalti</label>
+                                                                    <div class="col-sm-5 sm-m-t-10 m-b-10">
+                                                                        <input type="text" placeholder="" class="form-control" value="{{$akhir->pinalty}}">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-1">
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ol>
-
-                                            <ol class="list-block-mode list-items-akhir">
-                                                <li class="block">
-                                                    <div class="row">
-                                                        <div class="col-sm-11">
-                                                            <div class="row">
-                                                                <div class="col-sm-4">
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <div class="form-group">
-                                                                        <input type="text" class="form-control order" data-error="wajib diisi" id="order" placeholder="Deskripsi" required name="desc_akhir[]" aria-required="true" value="">
-                                                                        <div class="help-block with-errors"></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    <div class="form-group">
-                                                                        <input type="text" class="form-control order" data-error="wajib diisi" id="order" placeholder="0 Month" required name="duration_akhir[]" aria-required="true">
-                                                                        <div class="help-block with-errors"></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    <div class="form-group">
-                                                                        <input type="text" class="form-control order" data-error="wajib diisi" id="order" placeholder="Rp. 0,-" required name="pinalti_akhir[]" aria-required="true">
-                                                                        <div class="help-block with-errors"></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-1">
-                                                                    <button type="button" class="remove-invite btn btn-danger btn-sm" aria-hidden="true"><i class="pg-close"></i>x
-                                                                    </button>
-                                                                </div>
+                                                        <div class="form-group ">
+                                                            <label for="fname" class="col-sm-3 control-label">Risk</label>
+                                                            <div class="col-sm-9 m-b-10">
+                                                                <input type="text" class="form-control" id="risk" placeholder="" name="risk" value="{{ $akhir->activity_risk }}" required>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </li>
-                                            </ol>
-
-                                            <div class="clearfix"></div>
-
-                                            <ol class="list-inline list-block-mode ">
-                                                <li class="block">
-                                                    <div class="row clearfix">
-                                                        <div class="col-sm-11">
-                                                            <div class="row">
-                                                                <div class="col-sm-12 m-l-45">
-                                                                    <button class="btn btn-default btn-gray m-r-10 add-more-item-akhir bold600" type="button"><i class="fa fa-plus-circle"></i> Tambah</button>
-                                                                </div>
+                                                        <div class="form-group m-t-10">
+                                                            <label for="name" class="col-sm-3 control-label">Solution</label>
+                                                            <div class="col-sm-8 m-b-10">
+                                                                <textarea class="form-control" id="solution" placeholder="">{{ $akhir->activity_solution }}</textarea>
+                                                            </div>
+                                                            <div class="col-sm-1 m-b-10">
+                                                                <button class="btn btn-success" style="height: 50px"><i class="pg-close"></i> {{ $akhir->persentase }} %</button>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-1"></div>
+
+                                                        <br>
+                                                        <hr>
                                                     </div>
-                                                </li>
-                                            </ol>
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -408,6 +306,9 @@
 </div>
 @stop
 @section('page-script')
+
+    <script src="assets/js/form_layouts.js" type="text/javascript"></script>
+    <script src="assets/js/scripts.js" type="text/javascript"></script>
 <script>
     $("body").on('click', '.add-more-item-pendahuluan', function() {
         if($(".list-items li").length < 1001) {
