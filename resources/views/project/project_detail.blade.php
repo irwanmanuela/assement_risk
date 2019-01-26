@@ -97,18 +97,18 @@
                                                 <h3>Laporan Antara</h3>
                                                 <p>Jika Solusi tidak sesuai anda dapat melakukan perubahan data dengan mempertimbangkan solusi yang paling sesuai.
                                                 </p>
-                                                @foreach($data_antara as $pendahuluan)
+                                                @foreach($data_antara as $antara)
                                                     <div>
                                                         <div class="form-group ">
                                                             <label for="fname" class="col-sm-3 control-label">Permasalahan</label>
                                                             <div class="col-sm-9 m-b-10">
-                                                                <input type="text" class="form-control" id="fname" placeholder="" name="name" value="{{ $pendahuluan->activity_name }}" required>
+                                                                <input type="text" class="form-control" id="fname" placeholder="" name="name" value="{{ $antara->activity_name }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="form-group m-t-10">
                                                             <label for="name" class="col-sm-3 control-label">Description</label>
                                                             <div class="col-sm-9 m-b-10">
-                                                                <textarea class="form-control" id="name" placeholder="">{{ $pendahuluan->activity_desc }}</textarea>
+                                                                <textarea class="form-control" id="name" placeholder="">{{ $antara->activity_desc }}</textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -121,14 +121,14 @@
                                                                         <label for="fname" class="col-sm-3 control-label">Month</label>
                                                                     </div>
                                                                     <div class="col-sm-5">
-                                                                        <input type="text" class="form-control" placeholder="" value="{{ $pendahuluan->duration_date }}" required>
+                                                                        <input type="text" class="form-control" placeholder="" value="{{ $antara->duration_date }}" required>
                                                                     </div>
                                                                     <div class="col-sm-1">
                                                                         <label for="fname" class="col-sm-3 control-label">Pinalti</label>
 
                                                                     </div>
                                                                     <div class="col-sm-5 sm-m-t-10 m-b-10">
-                                                                        <input type="text" placeholder="" class="form-control" value="{{$pendahuluan->pinalty}}">
+                                                                        <input type="text" placeholder="" class="form-control" value="{{$antara->pinalty}}">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -136,16 +136,16 @@
                                                         <div class="form-group ">
                                                             <label for="fname" class="col-sm-3 control-label">Risk</label>
                                                             <div class="col-sm-9 m-b-10">
-                                                                <input type="text" class="form-control" id="risk" placeholder="" name="risk" value="{{ $pendahuluan->activity_risk }}" required>
+                                                                <input type="text" class="form-control" id="risk" placeholder="" name="risk" value="{{ $antara->activity_risk }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="form-group m-t-10">
                                                             <label for="name" class="col-sm-3 control-label">Solution</label>
                                                             <div class="col-sm-8 m-b-10">
-                                                                <textarea class="form-control" id="solution" placeholder="">{{ $pendahuluan->activity_solution }}</textarea>
+                                                                <textarea class="form-control" id="solution" placeholder="">{{ $antara->activity_solution }}</textarea>
                                                             </div>
                                                             <div class="col-sm-1 m-b-10">
-                                                                <button class="btn btn-success" style="height: 50px"><i class="pg-close"></i> {{ $pendahuluan->persentase }} %</button>
+                                                                <button class="btn btn-success" style="height: 50px"><i class="pg-close"></i> {{ $antara->persentase }} %</button>
                                                             </div>
                                                         </div>
 
@@ -164,18 +164,18 @@
                                                 <h3>Laporan Draft Akhir</h3>
                                                 <p>Jika Solusi tidak sesuai anda dapat melakukan perubahan data dengan mempertimbangkan solusi yang paling sesuai.
                                                 </p>
-                                                @foreach($data_draft_akhir as $pendahuluan)
+                                                @foreach($data_draft_akhir as $draft_akhir)
                                                     <div>
                                                         <div class="form-group ">
                                                             <label for="fname" class="col-sm-3 control-label">Permasalahan</label>
                                                             <div class="col-sm-9 m-b-10">
-                                                                <input type="text" class="form-control" id="fname" placeholder="" name="name" value="{{ $pendahuluan->activity_name }}" required>
+                                                                <input type="text" class="form-control" id="fname" placeholder="" name="name" value="{{ $draft_akhir->activity_name }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="form-group m-t-10">
                                                             <label for="name" class="col-sm-3 control-label">Description</label>
                                                             <div class="col-sm-9 m-b-10">
-                                                                <textarea class="form-control" id="name" placeholder="">{{ $pendahuluan->activity_desc }}</textarea>
+                                                                <textarea class="form-control" id="name" placeholder="">{{ $draft_akhir->activity_desc }}</textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -188,14 +188,14 @@
                                                                         <label for="fname" class="col-sm-3 control-label">Month</label>
                                                                     </div>
                                                                     <div class="col-sm-5">
-                                                                        <input type="text" class="form-control" placeholder="" value="{{ $pendahuluan->duration_date }}" required>
+                                                                        <input type="text" class="form-control" placeholder="" value="{{ $draft_akhir->duration_date }}" required>
                                                                     </div>
                                                                     <div class="col-sm-1">
                                                                         <label for="fname" class="col-sm-3 control-label">Pinalti</label>
 
                                                                     </div>
                                                                     <div class="col-sm-5 sm-m-t-10 m-b-10">
-                                                                        <input type="text" placeholder="" class="form-control" value="{{$pendahuluan->pinalty}}">
+                                                                        <input type="text" placeholder="" class="form-control" value="{{$draft_akhir->pinalty}}">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -203,16 +203,16 @@
                                                         <div class="form-group ">
                                                             <label for="fname" class="col-sm-3 control-label">Risk</label>
                                                             <div class="col-sm-9 m-b-10">
-                                                                <input type="text" class="form-control" id="risk" placeholder="" name="risk" value="{{ $pendahuluan->activity_risk }}" required>
+                                                                <input type="text" class="form-control" id="risk" placeholder="" name="risk" value="{{ $draft_akhir->activity_risk }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="form-group m-t-10">
                                                             <label for="name" class="col-sm-3 control-label">Solution</label>
                                                             <div class="col-sm-8 m-b-10">
-                                                                <textarea class="form-control" id="solution" placeholder="">{{ $pendahuluan->activity_solution }}</textarea>
+                                                                <textarea class="form-control" id="solution" placeholder="">{{ $draft_akhir->activity_solution }}</textarea>
                                                             </div>
                                                             <div class="col-sm-1 m-b-10">
-                                                                <button class="btn btn-success" style="height: 50px"><i class="pg-close"></i> {{ $pendahuluan->persentase }} %</button>
+                                                                <button class="btn btn-success" style="height: 50px"><i class="pg-close"></i> {{ $draft_akhir->persentase }} %</button>
                                                             </div>
                                                         </div>
 
