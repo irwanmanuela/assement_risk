@@ -390,5 +390,6 @@
 
         $('#createPurchaseOrderForm').validator('destroy').validator();
     });
+
 </script>
 @stop
