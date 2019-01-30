@@ -198,7 +198,7 @@ class ProjectController extends Controller
             }
         }
 
-        if (sizeof($request->get('item_draft_akhir')) > 0) {
+        if (sizeof($request->get('item_akhir')) > 0) {
             foreach ($request->get('item_akhir') as $key=>$value) {
 //            $data = MasterDataLaporan::where('id', $value)->get();
                 $dataAkhir =new LaporanAkhir();
