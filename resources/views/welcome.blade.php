@@ -78,7 +78,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Knowledge Management
+                    Sistem Manajemen Risiko
                 </div>
 
                 <div class="links">

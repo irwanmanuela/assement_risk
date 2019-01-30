@@ -15,78 +15,67 @@
                                 <div class="panel panel-default">
                                     <div class="panel-body">
                                         <div class="mixed-data">
-                                            <div class="container-fluid container-fixed-lg">
-                                                <!-- START PANEL -->
-                                                <div class="panel panel-transparent">
-                                                    <div class="panel-body">
-                                                        <div class="row">
-                                                            <div class="col-sm-10">
-                                                                <h3>Laporan Pendahuluan</h3>
-                                                                <p>Jika Solusi tidak sesuai anda dapat melakukan perubahan data dengan mempertimbangkan solusi yang paling sesuai.
-                                                                </p>
-                                                                @foreach($data_pendahuluan as $pendahuluan)
-                                                                    <div>
-                                                                        <div class="form-group ">
-                                                                            <label for="fname" class="col-sm-3 control-label">Permasalahan</label>
-                                                                            <div class="col-sm-9 m-b-10">
-                                                                                <input type="text" class="form-control" id="fname" placeholder="" name="name" value="{{ $pendahuluan->activity_name }}" required>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group m-t-10">
-                                                                            <label for="name" class="col-sm-3 control-label">Description</label>
-                                                                            <div class="col-sm-9 m-b-10">
-                                                                                <textarea class="form-control" id="name" placeholder="">{{ $pendahuluan->activity_desc }}</textarea>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">Duration</label>
-                                                                            <div class="col-sm-9">
-                                                                                {{--<p>Have you Worked at page Inc. before, Or joined the Pages Supirior Club?</p>--}}
-                                                                                {{--<p class="hint-text small">If yes State which Place, if yes note date and Job CODE / Membership Number</p>--}}
-                                                                                <div class="row">
-                                                                                    <div class="col-sm-1">
-                                                                                        <label for="fname" class="col-sm-3 control-label">Month</label>
-                                                                                    </div>
-                                                                                    <div class="col-sm-5">
-                                                                                        <input type="text" class="form-control" placeholder="" value="{{ $pendahuluan->duration_date }}" required>
-                                                                                    </div>
-                                                                                    <div class="col-sm-1">
-                                                                                        <label for="fname" class="col-sm-3 control-label">Pinalti</label>
-
-                                                                                    </div>
-                                                                                    <div class="col-sm-5 sm-m-t-10 m-b-10">
-                                                                                        <input type="text" placeholder="" class="form-control" value="{{$pendahuluan->pinalty}}">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group ">
-                                                                            <label for="fname" class="col-sm-3 control-label">Risk</label>
-                                                                            <div class="col-sm-9 m-b-10">
-                                                                                <input type="text" class="form-control" id="risk" placeholder="" name="risk" value="{{ $pendahuluan->activity_risk }}" required>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group m-t-10">
-                                                                            <label for="name" class="col-sm-3 control-label">Solution</label>
-                                                                            <div class="col-sm-8 m-b-10">
-                                                                                <textarea class="form-control" id="solution" placeholder="">{{ $pendahuluan->persentase  > 0 ? $pendahuluan->activity_solution : "" }}</textarea>
-                                                                            </div>
-                                                                            <div class="col-sm-1 m-b-10">
-                                                                                <a class="btn btn-success"  style="height: 50px; font-size: 20px; text-align: center; padding-top: 15px; margin-left: -5px;" href="{{ url('project/match-detail/'.$pendahuluan->project_id) }}" >{{ $pendahuluan->persentase }} %</a>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <br>
-                                                                        <hr>
-                                                                    </div>
-                                                                @endforeach
+                                            <div class="col-sm-10">
+                                                <h3>Laporan Pendahuluan</h3>
+                                                <p>Jika Solusi tidak sesuai anda dapat melakukan perubahan data dengan mempertimbangkan solusi yang paling sesuai.
+                                                </p>
+                                                @foreach($data_pendahuluan as $pendahuluan)
+                                                    <div>
+                                                        <div class="form-group ">
+                                                            <label for="fname" class="col-sm-3 control-label">Permasalahan</label>
+                                                            <div class="col-sm-9 m-b-10">
+                                                                <input type="text" class="form-control" id="fname" placeholder="" name="name" value="{{ $pendahuluan->activity_name }}" required>
                                                             </div>
                                                         </div>
+                                                        <div class="form-group m-t-10">
+                                                            <label for="name" class="col-sm-3 control-label">Description</label>
+                                                            <div class="col-sm-9 m-b-10">
+                                                                <textarea class="form-control" id="name" placeholder="">{{ $pendahuluan->activity_desc }}</textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">Duration</label>
+                                                            <div class="col-sm-9">
+                                                                {{--<p>Have you Worked at page Inc. before, Or joined the Pages Supirior Club?</p>--}}
+                                                                {{--<p class="hint-text small">If yes State which Place, if yes note date and Job CODE / Membership Number</p>--}}
+                                                                <div class="row">
+                                                                    <div class="col-sm-1">
+                                                                        <label for="fname" class="col-sm-3 control-label">Month</label>
+                                                                    </div>
+                                                                    <div class="col-sm-5">
+                                                                        <input type="text" class="form-control" placeholder="" value="{{ $pendahuluan->duration_date }}" required>
+                                                                    </div>
+                                                                    <div class="col-sm-1">
+                                                                        <label for="fname" class="col-sm-3 control-label">Pinalti</label>
+
+                                                                    </div>
+                                                                    <div class="col-sm-5 sm-m-t-10 m-b-10">
+                                                                        <input type="text" placeholder="" class="form-control" value="{{$pendahuluan->pinalty}}">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group ">
+                                                            <label for="fname" class="col-sm-3 control-label">Risk</label>
+                                                            <div class="col-sm-9 m-b-10">
+                                                                <input type="text" class="form-control" id="risk" placeholder="" name="risk" value="{{ $pendahuluan->activity_risk }}" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group m-t-10">
+                                                            <label for="name" class="col-sm-3 control-label">Solution</label>
+                                                            <div class="col-sm-8 m-b-10">
+                                                                <textarea class="form-control" id="solution" placeholder="">{{ $pendahuluan->persentase  > 0 ? $pendahuluan->activity_solution : "" }}</textarea>
+                                                            </div>
+                                                            <div class="col-sm-1 m-b-10">
+                                                                <a class="btn btn-success"  style="height: 50px; font-size: 20px; text-align: center; padding-top: 15px; margin-left: -5px;" href="{{ url('project/match-detail/'.$pendahuluan->project_id) }}" >{{ $pendahuluan->persentase }} %</a>
+                                                            </div>
+                                                        </div>
+
+                                                        <br>
+                                                        <hr>
                                                     </div>
-                                                </div>
-                                                <!-- END PANEL -->
+                                                @endforeach
                                             </div>
-                                            <!-- END CONTAINER FLUID -->
                                         </div>
                                     </div>
                                 </div>
