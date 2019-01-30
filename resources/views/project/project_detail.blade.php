@@ -69,10 +69,10 @@
                                                                         <div class="form-group m-t-10">
                                                                             <label for="name" class="col-sm-3 control-label">Solution</label>
                                                                             <div class="col-sm-8 m-b-10">
-                                                                                <textarea class="form-control" id="solution" placeholder="">{{ $pendahuluan->activity_solution }}</textarea>
+                                                                                <textarea class="form-control" id="solution" placeholder="">{{ $pendahuluan->persentase  > 0 ? $pendahuluan->activity_solution : "" }}</textarea>
                                                                             </div>
                                                                             <div class="col-sm-1 m-b-10">
-                                                                                <button class="btn btn-success" style="height: 50px"><i class="pg-close"></i> {{ $pendahuluan->persentase }} %</button>
+                                                                                <a class="btn btn-success"  style="height: 50px; font-size: 20px; text-align: center; padding-top: 15px; margin-left: -5px;" href="{{ url('project/match-detail/'.$pendahuluan->project_id) }}" >{{ $pendahuluan->persentase }} %</a>
                                                                             </div>
                                                                         </div>
 
@@ -142,10 +142,10 @@
                                                         <div class="form-group m-t-10">
                                                             <label for="name" class="col-sm-3 control-label">Solution</label>
                                                             <div class="col-sm-8 m-b-10">
-                                                                <textarea class="form-control" id="solution" placeholder="">{{ $antara->activity_solution }}</textarea>
+                                                                <textarea class="form-control" id="solution" placeholder="">{{ $antara->persentase > 0 ? $antara->activity_solution : "" }}</textarea>
                                                             </div>
                                                             <div class="col-sm-1 m-b-10">
-                                                                <button class="btn btn-success" style="height: 50px"><i class="pg-close"></i> {{ $antara->persentase }} %</button>
+                                                                <a class="btn btn-success"  style="height: 50px; font-size: 20px; text-align: center; padding-top: 15px; margin-left: -5px;" href="{{ url('project/match-detail/'.$antara->project_id) }}" >{{ $antara->persentase }} %</a>
                                                             </div>
                                                         </div>
 
@@ -209,10 +209,10 @@
                                                         <div class="form-group m-t-10">
                                                             <label for="name" class="col-sm-3 control-label">Solution</label>
                                                             <div class="col-sm-8 m-b-10">
-                                                                <textarea class="form-control" id="solution" placeholder="">{{ $draft_akhir->activity_solution }}</textarea>
+                                                                <textarea class="form-control" id="solution" placeholder="">{{ $draft_akhir->persentase > 0 ? $draft_akhir->activity_solution : "" }}</textarea>
                                                             </div>
                                                             <div class="col-sm-1 m-b-10">
-                                                                <button class="btn btn-success" style="height: 50px"><i class="pg-close"></i> {{ $draft_akhir->persentase }} %</button>
+                                                                <a id="" class="btn btn-success"  style="height: 50px; font-size: 20px; text-align: center; padding-top: 15px; margin-left: -5px;" href="{{ url('project/match-detail/'.$draft_akhir->project_id) }}" >{{ $draft_akhir->persentase }} %</a>
                                                             </div>
                                                         </div>
 
@@ -276,10 +276,10 @@
                                                         <div class="form-group m-t-10">
                                                             <label for="name" class="col-sm-3 control-label">Solution</label>
                                                             <div class="col-sm-8 m-b-10">
-                                                                <textarea class="form-control" id="solution" placeholder="">{{ $akhir->activity_solution }}</textarea>
+                                                                <textarea class="form-control" id="solution" placeholder="">{{ $akhir->persentase > 0 ? $akhir->activity_solution : "" }}</textarea>
                                                             </div>
                                                             <div class="col-sm-1 m-b-10">
-                                                                <button class="btn btn-success" style="height: 50px"><i class="pg-close"></i> {{ $akhir->persentase }} %</button>
+                                                                <a class="btn btn-success"  style="height: 50px; font-size: 20px; text-align: center; padding-top: 15px; margin-left: -5px;" href="{{ url('project/match-detail/'.$akhir->project_id) }}" >{{ $akhir->persentase }} %</a>
                                                             </div>
                                                         </div>
 

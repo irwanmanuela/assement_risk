@@ -14,7 +14,7 @@
                 <!-- START PANEL -->
                 <div class="panel panel-transparent">
                     <div class="panel-heading">
-                        <div class="panel-title">Pages Default Tables Style
+                        <div class="panel-title">Data
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -23,11 +23,10 @@
                             <table class="table table-hover" id="basicTable">
                                 <thead>
                                 <tr>
-                                    <th style="width:20%">Code</th>
-                                    <th style="width:20%">Nama Pasien</th>
-                                    <th style="width:20%">Tanggal Jatuh Tempo</th>
-                                    <th style="width:15%">Nominal</th>
-                                    <th style="width:15%">Status</th>
+                                    <th style="width:20%">Project</th>
+                                    <th style="width:20%">Category</th>
+                                    <th style="width:10%">Date </th>
+                                    <th style="width:35%">Description</th>
                                     <th style="width:15%">Action</th>
                                 </tr>
                                 </thead>
@@ -41,39 +40,16 @@
                                         <p>{{ $project->type_project }}</p>
                                     </td>
                                     <td class="v-align-middle">
-                                        <p>{{ $project->start_date }}</p>
+                                        <p>{{ date('Y', strtotime($project->start_date)) }}</p>
                                     </td>
                                     <td class="v-align-middle">
                                         <p>{{ $project->notes }}</p>
                                     </td>
                                     <td class="v-align-middle">
-                                        <p><span class="">Menunggu Pembayaran</span></p>
-                                    </td>
-                                    <td class="v-align-middle">
-                                        <a id="anchorID" class="btn btn-success btn-cons m-b-10" href="invoice" target="_blank">Cetak Invoice</a>
+                                        <a id="anchorID" class="btn btn-success btn-cons m-b-10" href="{{ url('project/'.$project->id) }}" >Detail</a>
                                     </td>
                                 </tr>
                                 @endforeach
-                                <tr>
-                                    <td class="v-align-middle ">
-                                        <p>eko1234</p>
-                                    </td>
-                                    <td class="v-align-middle">
-                                        <p>Eko</p>
-                                    </td>
-                                    <td class="v-align-middle">
-                                        <p>7 December 2017</p>
-                                    </td>
-                                    <td class="v-align-middle">
-                                        <p>Rp 725,000</p>
-                                    </td>
-                                    <td class="v-align-middle">
-                                        <p><span class="">Menunggu Pembayaran</span></p>
-                                    </td>
-                                    <td class="v-align-middle">
-                                        <a id="anchorID" class="btn btn-success btn-cons m-b-10" href="invoice" target="_blank">Cetak Invoice</a>
-                                    </td>
-                                </tr>
                                 </tbody>
                             </table>
                         </div>

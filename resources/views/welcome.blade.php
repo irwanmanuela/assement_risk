@@ -71,7 +71,7 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('project.create') }}">Create Project</a>
+                        {{--<a href="{{ route('project.create') }}">Create Project</a>--}}
                     @endauth
                 </div>
             @endif
@@ -82,9 +82,8 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ route('project.index') }}">Project</a>
-                    <a href="https://laracasts.com">Information</a>
-                    <a href="https://github.com/laravel/laravel">Information</a>
+                    <a href="{{ route('project.index') }}">Data Project</a>
+                    <a href="{{ route('project.create') }}">Analisa Masalah</a>
                 </div>
             </div>
         </div>

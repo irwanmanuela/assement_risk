@@ -47,7 +47,7 @@ class ProjectController extends Controller
         /** @var  $data */
         $data=new Project();
         $data->name=$request->get('name');
-        $data->type_project= 0;
+        $data->type_project= "Infrastructure";
         $data->start_date=$request->get('start_date');
         $data->notes=$request->get('notes');
         $data->save();
@@ -137,73 +137,87 @@ class ProjectController extends Controller
 
         $id = $request->get('id');
 
-        foreach ($request->get('item_pendahuluan') as $key=>$value) {
+        if (sizeof($request->get('item_pendahuluan')) > 0) {
+            foreach ($request->get('item_pendahuluan') as $key=>$value) {
 //            $data = MasterDataLaporan::where('id', $value)->get();
-            $dataPendahuluan =new LaporanPendahuluan();
-            $dataPendahuluan->project_id = $id;
-            $dataPendahuluan->activity_id= '1';
-            $dataPendahuluan->activity_name= $value;
-            $dataPendahuluan->activity_desc = $request->get('desc_pendahuluan')[$key];
-            $dataPendahuluan->duration_date = $request->get('duration_pendahuluan')[$key];
-            $dataPendahuluan->pinalty = $request->get('pinalti_pendahuluan')[$key];
+                $dataPendahuluan =new LaporanPendahuluan();
+                $dataPendahuluan->project_id = $id;
+                $dataPendahuluan->activity_id= '1';
+                $dataPendahuluan->activity_name= $value;
+                $dataPendahuluan->activity_desc = $request->get('desc_pendahuluan')[$key];
+                $dataPendahuluan->duration_date = $request->get('duration_pendahuluan')[$key];
+                $dataPendahuluan->pinalty = $request->get('pinalti_pendahuluan')[$key];
 
+                $data_mix = $value.' '.$request->get('desc_pendahuluan')[$key];
+                $array = explode(' ', $data_mix);
+                $serializedArr = serialize($array);
 
-            $array = explode(' ', $value);
-            $serializedArr = serialize($array);
-
-            $dataPendahuluan->keywords = $serializedArr;
-            $dataPendahuluan->save();
+                $dataPendahuluan->keywords = $serializedArr;
+                $dataPendahuluan->save();
+            }
         }
 
-        foreach ($request->get('item_antara') as $key=>$value) {
+        if (sizeof($request->get('item_antara')) > 0) {
+            foreach ($request->get('item_antara') as $key=>$value) {
 //            $data = MasterDataLaporan::where('id', $value)->get();
-            $dataAntara =new LaporanAntara();
-            $dataAntara->project_id = $id;
-            $dataAntara->activity_id= '1';
-            $dataAntara->activity_name= $value;
-            $dataAntara->activity_desc = $request->get('desc_antara')[$key];
-            $dataAntara->duration_date = $request->get('duration_antara')[$key];
-            $dataAntara->pinalty = $request->get('pinalti_antara')[$key];
-            $array = explode(' ', $value);
-            $serializedArr = serialize($array);
+                $dataAntara =new LaporanAntara();
+                $dataAntara->project_id = $id;
+                $dataAntara->activity_id= '1';
+                $dataAntara->activity_name= $value;
+                $dataAntara->activity_desc = $request->get('desc_antara')[$key];
+                $dataAntara->duration_date = $request->get('duration_antara')[$key];
+                $dataAntara->pinalty = $request->get('pinalti_antara')[$key];
 
-            $dataAntara->keywords = $serializedArr;
-            $dataAntara->save();
+                $data_mix = $value.' '.$request->get('desc_antara')[$key];
+                $array = explode(' ', $data_mix);
+                $serializedArr = serialize($array);
+
+                $dataAntara->keywords = $serializedArr;
+                $dataAntara->save();
+            }
         }
 
-        foreach ($request->get('item_draft_akhir') as $key=>$value) {
+
+        if (sizeof($request->get('item_draft_akhir')) > 0) {
+            foreach ($request->get('item_draft_akhir') as $key=>$value) {
 //            $data = MasterDataLaporan::where('id', $value)->get();
-            $dataDraftAkhir =new LaporanDraftAkhir();
-            $dataDraftAkhir->project_id = $id;
-            $dataDraftAkhir->activity_id = '1';
-            $dataDraftAkhir->activity_name= $value;
-            $dataDraftAkhir->activity_desc = $request->get('desc_draft_akhir')[$key];
-            $dataDraftAkhir->duration_date = $request->get('duration_draft_akhir')[$key];
-            $dataDraftAkhir->pinalty = $request->get('pinalti_draft_akhir')[$key];
+                $dataDraftAkhir =new LaporanDraftAkhir();
+                $dataDraftAkhir->project_id = $id;
+                $dataDraftAkhir->activity_id = '1';
+                $dataDraftAkhir->activity_name= $value;
+                $dataDraftAkhir->activity_desc = $request->get('desc_draft_akhir')[$key];
+                $dataDraftAkhir->duration_date = $request->get('duration_draft_akhir')[$key];
+                $dataDraftAkhir->pinalty = $request->get('pinalti_draft_akhir')[$key];
 
-            $array = explode(' ', $value);
-            $serializedArr = serialize($array);
+                $data_mix = $value.' '.$request->get('desc_draft_akhir')[$key];
+                $array = explode(' ', $data_mix);
+                $serializedArr = serialize($array);
 
-            $dataDraftAkhir->keywords = $serializedArr;
-            $dataDraftAkhir->save();
+                $dataDraftAkhir->keywords = $serializedArr;
+                $dataDraftAkhir->save();
+            }
         }
 
-        foreach ($request->get('item_akhir') as $key=>$value) {
+        if (sizeof($request->get('item_draft_akhir')) > 0) {
+            foreach ($request->get('item_akhir') as $key=>$value) {
 //            $data = MasterDataLaporan::where('id', $value)->get();
-            $dataAkhir =new LaporanAkhir();
-            $dataAkhir->project_id = $id;
-            $dataAkhir->activity_id = '1';
-            $dataAkhir->activity_name= $value;
-            $dataAkhir->activity_desc = $request->get('desc_akhir')[$key];
-            $dataAkhir->duration_date = $request->get('duration_akhir')[$key];
-            $dataAkhir->pinalty = $request->get('pinalti_akhir')[$key];
+                $dataAkhir =new LaporanAkhir();
+                $dataAkhir->project_id = $id;
+                $dataAkhir->activity_id = '1';
+                $dataAkhir->activity_name= $value;
+                $dataAkhir->activity_desc = $request->get('desc_akhir')[$key];
+                $dataAkhir->duration_date = $request->get('duration_akhir')[$key];
+                $dataAkhir->pinalty = $request->get('pinalti_akhir')[$key];
 
-            $array = explode(' ', $value);
-            $serializedArr = serialize($array);
+                $data_mix = $value.' '.$request->get('desc_akhir')[$key];
+                $array = explode(' ', $data_mix);
+                $serializedArr = serialize($array);
 
-            $dataAkhir->keywords = $serializedArr;
-            $dataAkhir->save();
+                $dataAkhir->keywords = $serializedArr;
+                $dataAkhir->save();
+            }
         }
+
 
         return redirect()->route('process-detail', ['id' => $id]);
 
@@ -598,30 +612,78 @@ class ProjectController extends Controller
             ->join('result_project', 'laporan_pendahuluan.id', '=', 'result_project.project_id')
             ->where('laporan_pendahuluan.project_id', $id)
             ->groupBy('laporan_pendahuluan.id')
-            ->get();
+            ->get([
+                'laporan_pendahuluan.activity_name',
+                'laporan_pendahuluan.activity_desc',
+                'laporan_pendahuluan.duration_date',
+                'laporan_pendahuluan.pinalty',
+                'result_project.activity_risk',
+                'result_project.activity_solution',
+                'result_project.project_id',
+                'result_project.persentase'
+            ]);
 
         $data_antara = DB::table('laporan_antara')
             ->join('result_project', 'laporan_antara.id', '=', 'result_project.project_id')
             ->where('laporan_antara.project_id', $id)
             ->groupBy('laporan_antara.id')
-            ->get();
+            ->get([
+                'laporan_antara.activity_name',
+                'laporan_antara.activity_desc',
+                'laporan_antara.duration_date',
+                'laporan_antara.pinalty',
+                'result_project.activity_risk',
+                'result_project.activity_solution',
+                'result_project.project_id',
+                'result_project.persentase'
+            ]);
 
         $data_draft_akhir= DB::table('laporan_akhir_draft')
             ->join('result_project', 'laporan_akhir_draft.id', '=', 'result_project.project_id')
             ->where('laporan_akhir_draft.project_id', $id)
             ->groupBy('laporan_akhir_draft.id')
-            ->get();
+            ->get([
+                'laporan_akhir_draft.activity_name',
+                'laporan_akhir_draft.activity_desc',
+                'laporan_akhir_draft.duration_date',
+                'laporan_akhir_draft.pinalty',
+                'result_project.activity_risk',
+                'result_project.activity_solution',
+                'result_project.project_id',
+                'result_project.persentase'
+            ]);
 
         $data_akhir = DB::table('laporan_akhir')
             ->join('result_project', 'laporan_akhir.id', '=', 'result_project.project_id')
             ->where('laporan_akhir.project_id', $id)
             ->groupBy('laporan_akhir.id')
-            ->get();
+            ->get([
+                'laporan_akhir.activity_name',
+                'laporan_akhir.activity_desc',
+                'laporan_akhir.duration_date',
+                'laporan_akhir.pinalty',
+                'result_project.activity_risk',
+                'result_project.activity_solution',
+                'result_project.project_id',
+                'result_project.persentase'
+            ]);
 
 
 
         return view('project.project_detail', compact('id', 'data_project', 'data_pendahuluan', 'data_antara', 'data_draft_akhir', 'data_akhir'));
 
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function project_match_detail($id)
+    {
+        $data_matching = ResultProject::where('project_id', $id)->orderByDesc('persentase')->get();
+
+        return view('project.match_detail_result', compact('id', 'data_matching'));
     }
 
     /**
@@ -670,7 +732,7 @@ class ProjectController extends Controller
         $data_pendahuluan = LaporanPendahuluan::all();
 
         foreach ($data_pendahuluan as $key=> $data) {
-            $activity = $data->activity_name;
+            $activity = $data->activity_name.' '.$data->activity_desc;
 
             $array = explode(' ', $activity);
             $serializedArr = serialize($array);
@@ -683,7 +745,7 @@ class ProjectController extends Controller
         $data_antara = LaporanAntara::all();
 
         foreach ($data_antara as $key=> $data) {
-            $activity = $data->activity_name;
+            $activity = $data->activity_name.' '.$data->activity_desc;
 
             $array = explode(' ', $activity);
             $serializedArr = serialize($array);
@@ -696,7 +758,7 @@ class ProjectController extends Controller
         $data_draft_akhir = LaporanDraftAkhir::all();
 
         foreach ($data_draft_akhir as $key=> $data) {
-            $activity = $data->activity_name;
+            $activity = $data->activity_name.' '.$data->activity_desc;
 
             $array = explode(' ', $activity);
             $serializedArr = serialize($array);
@@ -709,7 +771,7 @@ class ProjectController extends Controller
         $data_akhir = LaporanAkhir::all();
 
         foreach ($data_akhir as $key=> $data) {
-            $activity = $data->activity_name;
+            $activity = $data->activity_name.' '.$data->activity_desc;
 
             $array = explode(' ', $activity);
             $serializedArr = serialize($array);

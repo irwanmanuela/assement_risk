@@ -20,6 +20,7 @@ Route::get('project/loading/{id}', 'ProjectController@loading')->name('process-d
 Route::get('result/{id}', 'ProjectController@result');
 Route::get('converting', 'ProjectController@converting')->name('converting');
 Route::get('project/detail/{id}', 'ProjectController@project_detail')->name('project-detail');
+Route::get('project/match-detail/{id}', 'ProjectController@project_match_detail')->name('project-match-detail');
 Route::resource('project','ProjectController');
 Auth::routes();
 

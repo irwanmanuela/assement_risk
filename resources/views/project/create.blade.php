@@ -5,19 +5,18 @@
     <div class="container-sm-height full-height">
         <div class="row row-sm-height">
             <div class="col-sm-12 col-sm-height col-middle">
-                <img src="assets/img/logo.png" alt="logo" data-src="assets/img/logo.png" data-src-retina="assets/img/logo_2x.png" width="78" height="22">
                 <h3>Analisa Project</h3>
-                <p>
-                    <small>
-                        Create a pages account. If you have a facebook account, log into it for this process.
-                    </small>
-                </p>
+                {{--<p>--}}
+                    {{--<small>--}}
+                        {{--Create a pages account. If you have a facebook account, log into it for this process.--}}
+                    {{--</small>--}}
+                {{--</p>--}}
                 {{ Form::open(['method' => 'POST', 'class'=>'p-t-15','route' => ['project.store']]) }}
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group form-group-default">
                                 <label>Nama Project</label>
-                                <input type="text" name="name" placeholder="John" class="form-control" required>
+                                <input type="text" name="name" placeholder="Nama Project" class="form-control" required>
                             </div>
                         </div>
                     </div>
@@ -33,17 +32,17 @@
                         <div class="col-sm-12">
                             <div class="form-group form-group-default">
                                 <label>Catatan</label>
-                                <textarea name="notes" placeholder="Minimum of 4 Charactors" class="form-control" required></textarea>
+                                <textarea name="notes" placeholder="Deskripsi project" class="form-control" required></textarea>
                             </div>
                         </div>
                     </div>
 
                     <div class="row m-t-10">
-                        <div class="col-md-6">
-                            <p>I agree to the <a href="#" class="text-info small">Pages Terms</a> and <a href="#" class="text-info small">Privacy</a>.</p>
-                        </div>
+                        {{--<div class="col-md-6">--}}
+                            {{--<p>I agree to the <a href="#" class="text-info small">Pages Terms</a> and <a href="#" class="text-info small">Privacy</a>.</p>--}}
+                        {{--</div>--}}
                     </div>
-                    <button class="btn btn-primary btn-cons m-t-10 center" type="submit">Simpan</button>
+                    <button class="btn btn-primary btn-cons m-t-10 center" type="submit">Buat</button>
                 {{ Form::close() }}
             </div>
         </div>
