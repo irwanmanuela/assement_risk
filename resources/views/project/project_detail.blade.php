@@ -294,7 +294,7 @@
                             </div>
                         </div>
                         <div class="panel-footer">
-                            <button type="submit" class="btn btn-blue m-l-10 pull-right save">Simpan</button>
+                            <a href="#" class="btn btn-blue m-l-10 pull-right save">Simpan</a>
                             <a href="#" class="btn btn-default pull-right">Batal</a>
                             <div class="clearfix"></div>
                         </div>
@@ -389,6 +389,10 @@
         }
 
         $('#createPurchaseOrderForm').validator('destroy').validator();
+    });
+
+    $("body").on('click', '.save', function() {
+        alert("Data telah tersimpan");
     });
 
 </script>

@@ -53,9 +53,9 @@
         <div class="inline pull-left">
             <img src="assets/img/demo/pages_icon.png" alt="" class="m-t-5 " data-src="assets/img/demo/pages_icon.png" data-src-retina="assets/img/demo/pages_icon_2x.png" width="60" height="60">
         </div>
-        <div class="col-md-10 m-t-15">
-            <p class="hinted-text small inline ">No part of this website or any of its contents may be reproduced, copied, modified or adapted, without the prior written consent of the author, unless otherwise indicated for stand-alone materials.</p>
-        </div>
+        {{--<div class="col-md-10 m-t-15">--}}
+            {{--<p class="hinted-text small inline ">No part of this website or any of its contents may be reproduced, copied, modified or adapted, without the prior written consent of the author, unless otherwise indicated for stand-alone materials.</p>--}}
+        {{--</div>--}}
     </div>
 </div>
 <!-- START OVERLAY -->
