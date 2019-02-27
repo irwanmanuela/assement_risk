@@ -56,18 +56,18 @@
                                                             <div class="row">
                                                                 <div class="col-sm-4">
                                                                     <div class="form-group">
-                                                                        {{--<select class="js-example-basic-multiple full-width"  name="item_pendahuluan[]" data-placeholder="-- Pilih --" data-init-plugin="select2">--}}
-                                                                            {{--<option></option>--}}
-                                                                            {{--@foreach($data_pendahuluan as $data)--}}
-                                                                                {{--<option class="" value="{{ $data->id }}" selected data-id = "{{ $data->id }}">{{ $data->activity }}</option>--}}
-                                                                            {{--@endforeach--}}
+                                                                        <select class="js-example-basic-multiple full-width"  name="item_pendahuluan[]" data-placeholder="-- Pilih --" data-init-plugin="select2">
+                                                                            <option></option>
+                                                                            @foreach($data_pendahuluan as $data)
+                                                                                <option class="" value="{{ $data->activity }}" selected data-id = "{{ $data->id }}">{{ $data->activity }}</option>
+                                                                            @endforeach
 
-                                                                        {{--</select>--}}
+                                                                        </select>
 
-                                                                        <div class="form-group">
-                                                                            <input type="text" class="form-control order" data-error="wajib diisi" id="order" placeholder="Masalah" required name="item_pendahuluan[]" aria-required="true" value="">
-                                                                            <div class="help-block with-errors"></div>
-                                                                        </div>
+                                                                        {{--<div class="form-group">--}}
+                                                                            {{--<input type="text" class="form-control order" data-error="wajib diisi" id="order" placeholder="Masalah" required name="item_pendahuluan[]" aria-required="true" value="">--}}
+                                                                            {{--<div class="help-block with-errors"></div>--}}
+                                                                        {{--</div>--}}
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-3">
